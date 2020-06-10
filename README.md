@@ -34,8 +34,13 @@ npm install vue-router-page-turning -S
 </style>
 
 ```
+## prop
+
+Attribute|type| default |explain
+---|---|---|---
+transitionTime|number|500|过渡时间
+transitionRange|string|100%|过渡幅度
 
 
-
-
+## show
 ![show](https://sunbrightness.github.io/my-img/1591771235893.gif)
