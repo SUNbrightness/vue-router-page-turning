@@ -11,7 +11,7 @@
         name: "vue-router-page-truning",
         data() {
             return {
-                transitionName: 'slide-left',
+                transitionName: 'vue-router-page-truning-left',
                 historyQueue: [],
             }
         },
@@ -28,27 +28,27 @@
         created() {
             this.appendStyle(
                 [
-                    `.slide-right-enter-active,
-      .slide-right-leave-active,
-      .slide-left-enter-active,
-      .slide-left-leave-active {
+                    `.vue-router-page-truning-right-enter-active,
+      .vue-router-page-truning-right-leave-active,
+      .vue-router-page-truning-left-enter-active,
+      .vue-router-page-truning-left-leave-active {
         will-change: transform;
         transition: all ${this.transitionTime}ms;
         position: absolute;
       }`,
-                    `.slide-right-enter {
+                    `.vue-router-page-truning-right-enter {
         opacity: 0;
         transform: translate3d(-${this.transitionRange}, 0, 0);
       }`,
-                    `.slide-right-leave-active {
+                    `.vue-router-page-truning-right-leave-active {
         opacity: 0;
         transform: translate3d(${this.transitionRange}, 0, 0);
       }`,
-                    `.slide-left-enter {
+                    `.vue-router-page-truning-left-enter {
         opacity: 0;
         transform: translate3d(${this.transitionRange}, 0, 0);
       }`,
-                    `.slide-left-leave-active {
+                    `.vue-router-page-truning-left-leave-active {
         opacity: 0;
         transform: translate3d(-${this.transitionRange}, 0, 0);
       }  `
@@ -68,14 +68,14 @@
                 if (this.historyQueue.length > 1) {
                     let popPath = this.historyQueue[this.historyQueue.length - 2];
                     if (popPath == toPath) {
-                        this.transitionName = 'slide-right';
+                        this.transitionName = 'vue-router-page-truning-right';
                         //出栈
                         this.historyQueue.pop();
                         return;
                     }
                 }
                 //非返回
-                this.transitionName = 'slide-left';
+                this.transitionName = 'vue-router-page-truning-left';
                 //浏览记录入栈
                 this.historyQueue.push(toPath);
             }
