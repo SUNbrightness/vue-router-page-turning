@@ -1,0 +1,15 @@
+{
+  "name": "vue-router-page-turning",
+  "version": "1.0.0",
+  "description": "As the title suggests",
+  "main": "./src/VueRouterPageTurning.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SUNbrightness/vue-router-page-turning.git"
+  },
+  "author": "Ysunbrightness???why?",
+  "license": "MIT"
+}

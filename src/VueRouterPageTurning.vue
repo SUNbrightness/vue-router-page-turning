@@ -1,0 +1,106 @@
+<template>
+    <div>
+        <transition :name="transitionName">
+            <slot></slot>
+        </transition>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "vue-router-page-truning",
+        data() {
+            return {
+                transitionName: 'slide-left',
+                historyQueue: [],
+            }
+        },
+        props: {
+            transitionTime: {
+                type: Number,
+                default: 500
+            },
+            transitionRange: {
+                type: String,
+                default: '100%'
+            }
+        },
+        created() {
+            this.appendStyle(
+                [
+                    `.slide-right-enter-active,
+      .slide-right-leave-active,
+      .slide-left-enter-active,
+      .slide-left-leave-active {
+        will-change: transform;
+        transition: all ${this.transitionTime}ms;
+        position: absolute;
+      }`,
+                    `.slide-right-enter {
+        opacity: 0;
+        transform: translate3d(-${this.transitionRange}, 0, 0);
+      }`,
+                    `.slide-right-leave-active {
+        opacity: 0;
+        transform: translate3d(${this.transitionRange}, 0, 0);
+      }`,
+                    `.slide-left-enter {
+        opacity: 0;
+        transform: translate3d(${this.transitionRange}, 0, 0);
+      }`,
+                    `.slide-left-leave-active {
+        opacity: 0;
+        transform: translate3d(-${this.transitionRange}, 0, 0);
+      }  `
+                ]
+            )
+        },
+        watch: {
+            //使用watch 监听$router的变化切换不同方向动画
+            $route(to, from) {
+                let toPath = to.path;
+                //维护结构
+                //历史记录最多50
+                if (this.historyQueue.length > 50) {
+                    this.historyQueue.shift();
+                }
+                //是否是返回？
+                if (this.historyQueue.length > 1) {
+                    let popPath = this.historyQueue[this.historyQueue.length - 2];
+                    if (popPath == toPath) {
+                        this.transitionName = 'slide-right';
+                        //出栈
+                        this.historyQueue.pop();
+                        return;
+                    }
+                }
+                //非返回
+                this.transitionName = 'slide-left';
+                //浏览记录入栈
+                this.historyQueue.push(toPath);
+            }
+        },
+        methods: {
+            appendStyle(styles) {
+                var style = document.createElement("style");
+                style.type = "text/css";
+                try {
+                    for (let s of styles) {
+                        style.appendChild(document.createTextNode(s));
+                    }
+                } catch (ex) {
+                    for (let s of styles) {
+                        style.styleSheet.cssText += s; //针对IE
+                    }
+                }
+                var head = document.getElementsByTagName("head")[0];
+                head.appendChild(style);
+            }
+        }
+
+
+    };
+</script>
+
+<style>
+</style>
