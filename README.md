@@ -40,7 +40,7 @@ Attribute|type| default |explain
 ---|---|---|---
 transitionTime|number|500|过渡时间
 transitionRange|string|100%|过渡幅度
-
+exclude|Array|[]|不需要动画的路由
 
 ## show
 ![show](https://sunbrightness.github.io/my-img/1591771235893.gif)

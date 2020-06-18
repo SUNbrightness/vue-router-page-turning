@@ -16,6 +16,12 @@
             }
         },
         props: {
+            exclude: {
+                type: Array,
+                default: function () {
+                    return ['/']
+                },
+            },
             transitionTime: {
                 type: Number,
                 default: 500
@@ -74,8 +80,16 @@
                         return;
                     }
                 }
-                //非返回
-                this.transitionName = 'vue-router-page-truning-left';
+
+                //判断是否是排除路由
+                if (_.indexOf(this.exclude, toPath) != -1){
+                  console.log("no");
+                this.transitionName = '';
+                }else{
+                  //非返回
+                  this.transitionName = 'vue-router-page-truning-left';
+                }
+
                 //浏览记录入栈
                 this.historyQueue.push(toPath);
             }
