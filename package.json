@@ -1,5 +1,5 @@
 {
-  "name": "vue-router-page-turning",
+  "name": "@SUNbrightness/vue-router-page-turning",
   "version": "1.2.6",
   "description": "As the title suggests",
   "main": "./src/VueRouterPageTurning.vue",
