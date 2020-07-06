@@ -1,9 +1,8 @@
 {
-  "name": "@SUNbrightness/vue-router-page-turning",
-  "version": "1.2.7",
+  "name": "vue-router-page-turning",
+  "version": "1.2.8",
   "description": "As the title suggests",
   "main": "./src/VueRouterPageTurning.vue",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

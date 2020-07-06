@@ -83,7 +83,6 @@
 
                 //判断是否是排除路由
                 if (_.indexOf(this.exclude, toPath) != -1){
-                  console.log("no");
                 this.transitionName = '';
                 }else{
                   //非返回
