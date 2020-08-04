@@ -82,7 +82,7 @@
                 }
 
                 //判断是否是排除路由
-                if (_.indexOf(this.exclude, toPath) != -1){
+                if (this.exclude.indexOf(toPath) != -1){
                 this.transitionName = '';
                 }else{
                   //非返回
